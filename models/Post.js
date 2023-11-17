@@ -1,28 +1,38 @@
-import mongoose from "mongoose";
-const{Schema,model}=mongoose;
+const mongoose = require('mongoose');
 
-const postSch=new Schema(
-{
-    title:{
-        type: String,
-        required: true
-    },
-    desc:{
-        type: String,
-        required:true
-    },
-    image:{
-        type: String,
-        required:true
-    },
-    quantity:{
-        type: Int,
-        required:true
-    }
-
+const postSchema = new mongoose.Schema({
     
-},
-{
-    timestamps:true
-});
-export default model("game",gameSch);
+        title:{
+            type: String,
+            required: true
+        },
+        desc:{
+            type: String,
+            required:true
+        },
+        image:{
+            type: String,
+            required:true
+        },
+        category:{
+            type: String,
+            required:false
+        },
+        date:{
+            type: String,
+            required:true
+        },
+        state:{
+            type: String,
+            required:true
+        }
+    
+        
+    },
+    {
+        timestamps:true
+    });
+
+const postModel = mongoose.model('Post', postSchema);
+
+module.exports = postModel;
